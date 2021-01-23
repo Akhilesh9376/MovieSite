@@ -1,0 +1,52 @@
+{% extends 'App1/Base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block Home %}
+{% include 'App1/navbar.html' %}
+<div class="container-fluid">
+<div class="row">
+<!-- <div class="col-md-2">
+{% comment %} categories {% endcomment %}
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">
+    All Images
+  </a>
+  {% for category in cate %}
+  <a href="#" class="list-group-item list-group-item-action">{{category.title}}</a> 
+ {% endfor %}
+</div> -->
+</div>
+<div class="col-md-12">
+{% comment %} image {% endcomment %}
+
+<div class="row">
+<div class="col-md-12">
+<div class="card-columns">
+{% for image in images %}
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/media/{{image.image}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{image.title}}</h5>
+    <p class="card-text">{{image.description}}</p>
+    <a href="{{image.link}}" class="btn btn-primary">Download Now</a>
+  </div>
+</div>
+
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+{% include 'App1/footer.html' %}
+
+{% endblock %}
+
+
+
