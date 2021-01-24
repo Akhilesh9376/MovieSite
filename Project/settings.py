@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'iu4qi_a=40u1)ajkz6q!7%nsja-x1rbu^5uxx4eslw54ef(7!l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['moviemazza.herokuapp.com','127.0.0.1']
 
