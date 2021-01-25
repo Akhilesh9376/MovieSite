@@ -26,15 +26,14 @@ Home
 <div class="card-columns">
 {% for image in images %}
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/media/{{image.image}}" alt="Card image cap">
+<div class="card" style="width: 19rem;">
+  <img class="MovieMazza" src="/media/{{image.image}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{image.title}}</h5>
     <p class="card-text">{{image.description}}</p>
-    <a href="{{image.link}}" class="btn btn-primary">Download Now</a>
+    <a href="{{image.link}}" class="btn btn-info">Download Now</a>
   </div>
 </div>
-
 {% endfor %}
 </div>
 </div>
@@ -43,6 +42,37 @@ Home
 </div>
 
 </div>
+
+<!--  start for pagination  -->
+
+<div class="container">
+  <div class="row mt-5 mb-n2">
+      <div class="col-12 text-center text-muted">
+          <p><span>Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></p>
+      </div>
+  </div>
+
+  <ul class="pagination pagination-sm mb-5 justify-content-center">
+      {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+              <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+          {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+      {% endif %}
+  </ul>
+</div>
+<!-- end for pagination -->
 
 {% include 'App1/footer.html' %}
 
