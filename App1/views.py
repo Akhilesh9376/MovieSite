@@ -8,9 +8,10 @@ from django.core.paginator import Paginator
 def Home(request):
     cate=Category.objects.all()
     images=Image.objects.all().order_by('-added_date')
+    
     paginator=Paginator(images,6)
     page_number=request.GET.get('page')
-    page_obj=paginator.get_page('page_number')
+    page_obj=paginator.get_page(page_number)
     context={'images':images,'cate':cate,'page_obj':page_obj
     }
     return render(request,'App1/Home.html',context)
